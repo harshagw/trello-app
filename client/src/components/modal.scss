@@ -1,0 +1,21 @@
+.backdrop{
+    position: absolute;
+    z-index: 2;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: #000000e1;
+    
+    overflow-y: hidden;
+    // background-color: rgba(200, 200, 200, 0.4);
+    // backdrop-filter: blur(5px);
+
+    .modal{
+        margin-top:40px;
+    }
+}

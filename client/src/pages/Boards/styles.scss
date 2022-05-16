@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+.board{
+    width:100%;
+    height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    .board_header{
+        padding:10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .board_headers_left{
+            h1{
+                font-size:24px;
+            }
+        }
+
+        .board_headers_right{
+            h2{
+                font-size:16px;
+            }
+        }
+    }
+
+    .board_body{
+        flex-grow: 1;
+        overflow: hidden;
+
+        width:100%;
+        display: flex;
+
+        .board_sidebar{
+            width:400px;
+            height: 100%;
+            padding:20px 30px;
+            background-color: #eeeeef;
+        }
+
+        .board_lists{
+            display: flex;
+            overflow-x: scroll;
+            overflow-y: hidden;
+
+            margin:0 20px;
+    
+            .board_list{
+                flex-shrink:0;
+
+                width:300px;
+                height: 100%;
+                margin-right:20px;
+
+                display: flex;
+                flex-direction: column;
+
+                .board_list_header{
+                    display: flex;
+                    padding: 10px 20px;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: #eeeeef;
+                    border-radius: 5px;
+                    
+                    h5{
+                        font-weight: 500;
+                    }
+                }
+
+                .add_card{
+                    text-align: center;
+                    padding:40px 0;
+                    font-weight: 400;
+                    border:1px dashed #a9a9a6;
+                    margin-bottom:20px;
+                }
+    
+                .board_cards{
+                    margin:20px 0;
+                
+                    overflow-y: scroll;
+    
+                    .board_list_card{
+                        margin:0px 0 15px;
+                        padding: 15px 20px;
+                        background-color: #eeeeef;
+                        border-radius: 5px;
+    
+                        .card_header{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+    
+                            .card_tags{
+                                display: flex;
+                                flex-wrap: wrap;
+        
+                                a{
+                                    font-size: 10px;
+                                    padding:2px 5px;
+                                    background-color: #eb5a46;
+                                    color:white;
+                                    margin:0 5px 5px 0;
+                                    border-radius: 3px;
+                                }
+                            }
+                        }
+    
+                        
+    
+                        h5{
+                            font-weight: 500;
+                            margin:5px 0 5px;
+                        }
+    
+                        p{
+                            font-size: 14px;
+                            color:#a9a9a6;
+                        }
+    
+                        .card_bottom_bar{
+                            margin:5px 0 0;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            
+                            .card_assignees{
+    
+                                a{
+                                    transform: translate(-3px,0);
+                                    font-size:12px;
+                                    padding:5px;
+                                    border-radius: 50%;
+                                    background-color: aquamarine;
+                                }
+                            }
+    
+                            .card_properties{
+                                display: flex;
+                                align-items: center;
+    
+                                .card_property{
+                                    display: flex;
+                                    align-items: center;
+    
+                                    margin-left: 10px;
+                                   span{
+                                       margin-bottom:3px;
+                                       margin-left: 5px;
+                                       font-size:12px;
+                                   }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            
+        }
+                
+    }
+
+}
+
+.card-details{
+    background-color:white;
+    padding:20px 20px;
+    border-radius: 5px;
+    height: 300px;
+    width:40vw;
+}
