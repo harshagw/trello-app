@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700,800,900&display=swap");
+
+html {
+  overflow-x: hidden;
+  --noto-sans: "Noto Sans", sans-serif;
+  --primary-color: rgb(8, 154, 227);
+}
+
+*,
+*::before,
+*::after {
+  font-family: var(--noto-sans);
+  box-sizing: border-box;
+  margin: 0;
+}

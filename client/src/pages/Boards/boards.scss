@@ -1,0 +1,26 @@
+.boards {
+  margin: 20px 20px;
+
+  .boards_section {
+    margin-bottom: 20px;
+
+    h1 {
+      margin: 0 0 5px;
+    }
+
+    .boards_list {
+      display: flex;
+      flex-wrap: wrap;
+
+      .board_tile {
+        height: 150px;
+        width: 250px;
+        background-color: #eeeeef;
+
+        display: grid;
+        place-items: center;
+        margin: 0 10px 10px 0;
+      }
+    }
+  }
+}

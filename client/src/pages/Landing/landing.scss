@@ -1,0 +1,40 @@
+.main {
+  margin: var(--size-5);
+  display: flex;
+  width: calc(100vw - (2 * var(--size-5)));
+  height: calc(100vh - (2 * var(--size-5)));
+  overflow: hidden;
+  justify-content: center;
+
+  .right-main {
+    height: 100%;
+    width: clamp(400px, 40%, 600px);
+    background-color: var(--cyan-6);
+    border-radius: var(--radius-3);
+  }
+
+  .left-main {
+    margin: 0 var(--size-7);
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    header {
+      a {
+        display: inline-block;
+        color: var(--gray-9);
+        margin-right: var(--size-4);
+      }
+    }
+    main {
+      h1 {
+        font-size: calc(var(--font-size-8));
+        max-inline-size: 15ch;
+      }
+      p {
+        margin: var(--size-4) 0;
+      }
+    }
+  }
+}

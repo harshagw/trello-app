@@ -1,0 +1,21 @@
+
+.menu-item{
+    position: relative;
+
+    .sub-menu {
+        position: absolute;
+        top: 30px;
+        right: 0px;     
+        transform-origin: 0 -30px;
+        z-index:2;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        
+        background-color: #eeeeef;
+        border-radius: 5px;
+        width: clamp(150px, 5vw, 320px);
+        padding: 10px 15px;
+    }
+    
+}
+

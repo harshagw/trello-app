@@ -1,12 +1,16 @@
-import './App.css';
-import BoardPage from './pages/Boards/BoardPage';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
+import "./globals.scss";
+import "./app.scss";
+import DashboardPage from "./pages/Dashboard/DashboardPage";
+import LandingPage from "./pages/Landing/LandingPage";
+
+const App = () => {
   return (
-    <div className="App">
-     <BoardPage />
-    </div>
+    // <DashboardPage />
+    <LandingPage />
   );
-}
+};
 
 export default App;
