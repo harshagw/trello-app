@@ -3,30 +3,31 @@ import Card from "./Card";
 import { BsThreeDots } from "react-icons/bs";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
-const List = () => {
+const List = ({ setCardDetailsOpen }) => {
   return (
-    <div className="board_list">
+    <div className="board_list" style={{ backgroundColor: "var(--blue-0)" }}>
       <div className="board_list_header">
-        <h5>Design</h5>
-        <DropdownMenu
+        <h6>Design</h6>
+        {/* <DropdownMenu
           menuItem={<BsThreeDots />}
           className="board_list_header_menu"
         >
           <a className="board_list_header_menu_item">Rename</a>
           <a className="board_list_header_menu_item">Delete</a>
-        </DropdownMenu>
+        </DropdownMenu> */}
+        <BsThreeDots />
       </div>
 
       <div className="board_cards">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card setCardDetailsOpen={setCardDetailsOpen} />
+        <Card setCardDetailsOpen={setCardDetailsOpen} />
+        <Card setCardDetailsOpen={setCardDetailsOpen} />
+        <Card setCardDetailsOpen={setCardDetailsOpen} />
+        <Card setCardDetailsOpen={setCardDetailsOpen} />
       </div>
 
       <div className="add_card">
-        <h5>Add new card</h5>
+        <h6>Add new card</h6>
       </div>
     </div>
   );

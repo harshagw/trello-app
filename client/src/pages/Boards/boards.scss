@@ -1,11 +1,11 @@
 .boards {
-  margin: 20px 20px;
+  margin: 30px;
 
   .boards_section {
     margin-bottom: 20px;
 
-    h1 {
-      margin: 0 0 5px;
+    .boards_section_heading {
+      margin: 0 0 20px;
     }
 
     .boards_list {
@@ -13,13 +13,39 @@
       flex-wrap: wrap;
 
       .board_tile {
-        height: 150px;
-        width: 250px;
-        background-color: #eeeeef;
+        height: 200px;
+        width: 300px;
+        background-color: var(--red-1);
+        padding: 20px;
+        margin: 0 20px 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border-radius: 5px;
 
-        display: grid;
-        place-items: center;
-        margin: 0 10px 10px 0;
+        p {
+          margin-top: 5px;
+          color: var(--gray-7);
+          font-size: 0.9rem;
+        }
+
+        .shared {
+          position: relative;
+          margin-top: 5px;
+
+          a {
+            display: inline-block;
+            border-radius: 50%;
+            color: white;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            margin-right: 2px;
+
+            &.shared_plus {
+              padding: 4px 6px;
+            }
+          }
+        }
       }
     }
   }

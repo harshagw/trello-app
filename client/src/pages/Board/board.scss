@@ -1,141 +1,101 @@
 .board {
-  width: 100%;
   height: 100vh;
   overflow: hidden;
+  position: relative;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
 
-  .board_header {
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .board_headers_left {
-      h1 {
-        // font-size: 24px;
-      }
-    }
-
-    .board_headers_right {
-      h2 {
-        // font-size: 16px;
-      }
-    }
+  .board_main_sidebar {
+    position: relative;
   }
 
   .board_body {
     flex-grow: 1;
     overflow: hidden;
-
     width: 100%;
+    margin: 30px 30px 5px;
     display: flex;
+    flex-direction: column;
 
-    .board_sidebar {
-      // width:400px;
-      height: 100%;
-      padding: 20px 30px;
-      background-color: #eeeeef;
-    }
+    .board_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
 
-    ::-webkit-scrollbar {
-      width: 3px;
-    }
+      .board_headers_left {
+      }
 
-    ::-webkit-scrollbar-track {
-      background-color: white;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #eeeeef;
-      border-radius: 5px;
+      .board_headers_right {
+        p {
+          font-size: 0.75rem;
+        }
+      }
     }
 
     .board_lists {
+      flex-grow: 1;
       display: flex;
-      overflow-x: scroll;
+      overflow-x: auto;
       overflow-y: hidden;
-
-      margin: 0 20px;
+      padding-bottom: 30px;
 
       .board_list {
         flex-shrink: 0;
-
+        background-color: var(--gray-2);
+        border-radius: 5px;
         width: 300px;
         height: 100%;
-        margin-right: 20px;
+        margin-right: 10px;
 
         display: flex;
         flex-direction: column;
 
         .board_list_header {
+          margin: 15px;
           display: flex;
-          padding: 10px 20px;
           align-items: center;
           justify-content: space-between;
-          background-color: #eeeeef;
-          border-radius: 5px;
-
-          h5 {
-            // font-weight: 500;
-          }
-
-          .board_list_header_menu {
-            .board_list_header_menu_item {
-              display: block;
-              margin: 5px 0;
-            }
-          }
         }
 
         .add_card {
           text-align: center;
-          padding: 40px 0;
-          // font-weight: 400;
+          padding: 10px 0;
           border: 1px dashed #a9a9a6;
-          margin-bottom: 20px;
+          margin: 15px;
         }
 
         .board_cards {
-          margin: 20px 0;
-
+          margin: 0 15px;
+          flex-grow: 1;
           overflow-y: scroll;
 
           .board_list_card {
-            margin: 0px 5px 15px 0;
-            padding: 15px 20px;
-            background-color: #eeeeef;
+            margin: 0px 0 10px 0;
+            padding: 10px;
+            background-color: white;
             border-radius: 5px;
+            cursor: pointer;
 
             .card_header {
               display: flex;
               justify-content: space-between;
               align-items: center;
+              margin-bottom: 10px;
 
               .card_tags {
                 display: flex;
                 flex-wrap: wrap;
 
                 a {
-                  // font-size: 10px;
+                  font-size: 0.75rem;
                   padding: 2px 5px;
-                  background-color: #eb5a46;
-                  color: white;
+                  border: 1px dotted var(--blue-1);
                   margin: 0 5px 5px 0;
                   border-radius: 3px;
                 }
               }
-            }
-
-            h5 {
-              // font-weight: 500;
-              margin: 5px 0 5px;
-            }
-
-            p {
-              // font-size: 14px;
-              color: #a9a9a6;
             }
 
             .card_bottom_bar {
@@ -145,12 +105,8 @@
               align-items: center;
 
               .card_assignees {
-                a {
-                  transform: translate(-3px, 0);
-                  // font-size: 12px;
-                  padding: 5px;
-                  border-radius: 50%;
-                  background-color: aquamarine;
+                .name_avatar {
+                  margin-right: 5px;
                 }
               }
 
@@ -182,6 +138,4 @@
   background-color: white;
   padding: 20px 20px;
   border-radius: 5px;
-  height: 300px;
-  width: 40vw;
 }

@@ -8,8 +8,10 @@ import LandingPage from "./pages/Landing/LandingPage";
 
 const App = () => {
   return (
-    // <DashboardPage />
-    <LandingPage />
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
+    </Routes>
   );
 };
 

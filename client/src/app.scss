@@ -4,6 +4,8 @@ html {
   overflow-x: hidden;
   --noto-sans: "Noto Sans", sans-serif;
   --primary-color: rgb(8, 154, 227);
+  background-color: white;
+  font-size: 14px;
 }
 
 *,
@@ -12,4 +14,44 @@ html {
   font-family: var(--noto-sans);
   box-sizing: border-box;
   margin: 0;
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--gray-9);
+  color: white;
+  padding: 15px 45px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &.button_lighter {
+    background-color: white;
+    color: var(--gray-9);
+    border: 1px solid var(--gray-9);
+  }
+}
+
+.name_avatar {
+  font-size: 0.85rem;
+  padding: 7px;
+  background-color: var(--blue-7);
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  padding: 0;
+  color: var(--gray-9);
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: var(--gray-6);
 }

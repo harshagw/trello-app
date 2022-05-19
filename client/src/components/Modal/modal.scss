@@ -1,21 +1,41 @@
-.backdrop{
-    position: absolute;
-    z-index: 2;
-    top:0;
-    left:0;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.backdrop {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    background: #000000e1;
-    
-    overflow-y: hidden;
-    // background-color: rgba(200, 200, 200, 0.4);
-    // backdrop-filter: blur(5px);
+  background: #000000e1;
 
-    .modal{
-        margin-top:40px;
+  overflow-y: hidden;
+
+  .modal {
+    margin-top: 40px;
+
+    .modal_body {
+      background-color: white;
+      padding: 30px;
+      border-radius: 5px;
+      width: clamp(200px, 30vw, 600px);
+
+      p {
+        margin-top: 10px;
+      }
+
+      .modal_bottom {
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+
+        a {
+          margin-left: 10px;
+        }
+      }
     }
+  }
 }
