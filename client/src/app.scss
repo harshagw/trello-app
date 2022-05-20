@@ -20,9 +20,13 @@ html {
   display: inline-block;
   background-color: var(--gray-9);
   color: white;
-  padding: 15px 45px;
+  padding: 10px 25px;
   border-radius: 10px;
   cursor: pointer;
+
+  &.button_larger {
+    padding: 15px 45px;
+  }
 
   &.button_lighter {
     background-color: white;

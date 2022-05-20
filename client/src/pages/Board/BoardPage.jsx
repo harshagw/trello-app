@@ -31,7 +31,7 @@ const BoardPage = () => {
         <div className="board_body">
           <div className="board_header">
             <div className="board_headers_left">
-              <h6>Open House Plans</h6>
+              <h5>Open House Plans</h5>
             </div>
             <div className="board_headers_right">
               <p onClick={() => setSidebarIsOpen((prev) => !prev)}>

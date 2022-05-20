@@ -57,7 +57,7 @@
           input {
             flex-grow: 1;
             display: block;
-            background-color: var(--gray-0);
+            background-color: white;
             padding: 15px 10px;
           }
 
@@ -70,5 +70,13 @@
   }
 
   .form {
+    .input_block {
+      flex-direction: column;
+      p {
+        font-weight: 600;
+        color: var(--gray-5);
+        padding: 0 10px;
+      }
+    }
   }
 }

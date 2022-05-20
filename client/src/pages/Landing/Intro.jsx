@@ -13,7 +13,7 @@ const Intro = () => {
 
       <div className="input_block">
         <input type="text" placeholder="Your email address" />
-        <a className="button">Proceed</a>
+        <a className="button button_larger">Proceed</a>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const Signin = () => {
       <div className="input_block">
         <input type="password" placeholder="Your password" />
       </div>
-      <a href="#" className="button">
+      <a href="#" className="button button_larger">
         submit
       </a>
     </div>

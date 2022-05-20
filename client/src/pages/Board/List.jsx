@@ -5,7 +5,7 @@ import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 const List = ({ setCardDetailsOpen }) => {
   return (
-    <div className="board_list" style={{ backgroundColor: "var(--blue-0)" }}>
+    <div className="board_list">
       <div className="board_list_header">
         <h6>Design</h6>
         {/* <DropdownMenu
