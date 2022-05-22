@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+import {
+  register as registerAuth,
+  reset,
+} from "../../../features/auth/authSlice";
 
 const schema = yup
   .object({
@@ -25,13 +32,44 @@ const Signup = () => {
   const {
     register,
     handleSubmit,
+    resetField,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log("error");
+      console.log(message);
+
+      resetField("email");
+      resetField("password");
+      setError("email", { type: "custom", message: "email already exists" });
+    }
+
+    if (isSuccess) {
+      navigate("/signin");
+    }
+
+    dispatch(reset());
+  }, [isError, isSuccess, message, navigate, dispatch]);
+
   const onSubmit = (data) => {
-    console.log(data);
+    const userData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+    dispatch(registerAuth(userData));
   };
 
   console.log("rendred");
@@ -62,7 +100,11 @@ const Signup = () => {
           />
           <p>{errors.password?.message}</p>
         </div>
-        <button className="button button_larger">create</button>
+        {isLoading ? (
+          <h4>Loading...</h4>
+        ) : (
+          <button className="button button_larger">create</button>
+        )}
       </div>
     </form>
   );

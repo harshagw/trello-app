@@ -5,7 +5,7 @@ const BoardTile = ({ name, by, at, bgcolor }) => {
   return (
     <div
       className="board_tile"
-      style={{ "background-color": `var(--${bgcolor}-1)` }}
+      style={{ backgroundColor: `var(--${bgcolor}-1)` }}
     >
       <Link to="/dashboard/board/id">
         <h5>{name}</h5>

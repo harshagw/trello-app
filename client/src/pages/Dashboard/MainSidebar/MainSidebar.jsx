@@ -10,7 +10,7 @@ import {
 const MainSidebar = ({ setLogoutOpen }) => {
   return (
     <div className="header">
-      <Link to="/" className="logo">
+      <Link to="/dashboard" className="logo">
         <h2>T</h2>
       </Link>
       <div className="header_menu">

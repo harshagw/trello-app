@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../../components/Modal/Modal";
 
 const CardDetails = ({ setOpen }) => {
   return (

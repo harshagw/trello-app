@@ -1,7 +1,15 @@
-import React from "react";
-import Modal from "../../components/Modal/Modal";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import Modal from "../../../components/Modal/Modal";
+import { logout } from "../../../features/auth/authSlice";
 
 const Logout = ({ open, setOpen }) => {
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <Modal onClose={() => setOpen((prev) => setOpen(false))}>
       <div className=" modal_body logout_modal ">
@@ -18,7 +26,7 @@ const Logout = ({ open, setOpen }) => {
           >
             Close
           </a>
-          <a href="/" className="button button_lighter">
+          <a className="button button_lighter" onClick={handleLogout}>
             Sure
           </a>
         </div>

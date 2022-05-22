@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
+import { toast } from "react-toastify";
 
-const user = JSON.parse(localStorage.getItem("user"));
+const data = JSON.parse(localStorage.getItem("authData"));
 
 const initialState = {
-  user: user ? user : null,
+  data: data ? data : null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -40,9 +41,22 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
-export const logout = createAsyncThunk("auth/logout", async () => {
-  await authService.logout();
-});
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (data, thunkAPI) => {
+    try {
+      await authService.logout();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -63,13 +77,13 @@ export const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
+        toast.success("Registration is successfull.");
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        state.user = null;
+        state.data = null;
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true;
@@ -77,16 +91,17 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
+        state.data = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        state.user = null;
+        state.data = null;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.user = null;
+        state.data = null;
+        toast.success("You have logout successfully.");
       });
   },
 });

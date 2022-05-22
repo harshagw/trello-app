@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "./Card";
 import { BsThreeDots } from "react-icons/bs";
-import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 const List = ({ setCardDetailsOpen }) => {
   return (
