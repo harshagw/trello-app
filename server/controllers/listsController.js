@@ -1,9 +1,11 @@
-const Board = require("../models/Board");
+const List = require("../models/List");
 
-const getAllBoards = async (req, res, next) => {
+const getAllListByBoard = async (req, res, next) => {
   const userId = req.user._id;
+  const boardId = req.params.boardId;
+
   try {
-    const boards = await Board.find({ adminId: userId }).sort({
+    const boards = await Li.find({ adminId: userId }).sort({
       createdAt: "descending",
     });
     res.status(200).json({ data: boards });
@@ -12,7 +14,7 @@ const getAllBoards = async (req, res, next) => {
   }
 };
 
-const getBoard = async (req, res, next) => {
+const getList = async (req, res, next) => {
   const boardId = req.params.id;
   if (!boardId.match(/^[0-9a-fA-F]{24}$/)) {
     return res.status(501).json({ message: "Board ID is not valid" });
@@ -35,7 +37,7 @@ const getBoard = async (req, res, next) => {
   }
 };
 
-const addBoard = async (req, res, next) => {
+const addListToBoard = async (req, res, next) => {
   const userId = req.user._id;
 
   const board = new Board({
@@ -52,7 +54,7 @@ const addBoard = async (req, res, next) => {
   }
 };
 
-const updateBoard = async (req, res, next) => {
+const updateList = async (req, res, next) => {
   const boardId = req.params.id;
 
   if (!boardId.match(/^[0-9a-fA-F]{24}$/)) {
@@ -90,7 +92,7 @@ const updateBoard = async (req, res, next) => {
   }
 };
 
-const deleteBoard = async (req, res, next) => {
+const deleteList = async (req, res, next) => {
   const boardId = req.params.id;
   if (!boardId.match(/^[0-9a-fA-F]{24}$/)) {
     return res.status(501).json({ message: "Board ID is not valid" });
@@ -113,4 +115,10 @@ const deleteBoard = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllBoards, getBoard, addBoard, updateBoard, deleteBoard };
+module.exports = {
+  getAllListByBoard,
+  getList,
+  addListToBoard,
+  deleteList,
+  updateList,
+};

@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
-const List = require("./List");
 
-const boardSchema = new mongoose.Schema(
+const cardSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
       trim: true,
@@ -14,19 +13,22 @@ const boardSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
-    adminId: {
+    listId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "List",
+    },
+    assignedTo: {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: false,
+    },
+    dueDate: {
+      type: Date,
+      required: false,
     },
   },
   { timestamps: true }
 );
 
-boardSchema.pre("remove", async function (next) {
-  const board = this;
-  await List.deleteMany({ boardId: board._id });
-  next();
-});
-
-module.exports = mongoose.model("Board", boardSchema);
+module.exports = mongoose.model("Card", cardSchema);

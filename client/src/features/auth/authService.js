@@ -12,7 +12,7 @@ const login = async (userData) => {
   const response = await axios.post("auth/login", userData);
 
   if (response.data) {
-    localStorage.setItem("authData", JSON.stringify(response.data));
+    localStorage.setItem("authData", JSON.stringify(response.data.data));
   }
 
   return response.data;
@@ -22,17 +22,22 @@ const login = async (userData) => {
 const logout = async () => {
   const response = await axios.get("auth/logout");
 
-  if (response.data) {
-    localStorage.removeItem("authData");
-  }
+  localStorage.removeItem("authData");
 
   return response.data;
 };
+
+// const refresh = async () => {
+//   console.log("runnning refresh");
+//   const response = await axios.get("auth/refresh");
+//   return response.data;
+// };
 
 const authService = {
   register,
   logout,
   login,
+  // refresh,
 };
 
 export default authService;

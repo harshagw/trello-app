@@ -1,14 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BoardTile = ({ name, by, at, bgcolor }) => {
+const BoardTile = ({ board }) => {
+  const bgcolor = "gray";
+  const by = "Harsh Agarwal";
+  const at = "9:40PM";
+
   return (
     <div
       className="board_tile"
       style={{ backgroundColor: `var(--${bgcolor}-1)` }}
     >
-      <Link to="/dashboard/board/id">
-        <h5>{name}</h5>
+      <Link to={`/dashboard/board/${board["_id"]}`}>
+        <h5>{board["name"]}</h5>
       </Link>
       <div className="shared">
         <a style={{ backgroundColor: `var(--${bgcolor}-9)` }}>H</a>

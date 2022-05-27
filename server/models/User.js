@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const Board = require("./Board");
 
 const userSchema = new mongoose.Schema(
   {
@@ -30,12 +31,13 @@ userSchema.methods.comparePassword = function (password) {
 
 userSchema.methods.generateAccessToken = function () {
   const payload = {
+    _id: this._id,
     email: this.email,
     name: this.name,
   };
 
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "30s",
+    expiresIn: "1hr",
   });
 };
 
@@ -77,6 +79,12 @@ userSchema.pre("save", function (next) {
       next();
     });
   });
+});
+
+userSchema.pre("remove", async function (next) {
+  const user = this;
+  await Board.deleteMany({ adminId: user._id });
+  next();
 });
 
 module.exports = mongoose.model("User", userSchema);

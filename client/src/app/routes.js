@@ -1,5 +1,5 @@
-import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useLocation, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // only when user is logged in
 export const PrivateRoute = ({ children }) => {

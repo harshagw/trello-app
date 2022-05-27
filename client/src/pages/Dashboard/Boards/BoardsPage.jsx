@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { useGetAllBoardsQuery } from "../../../features/boards/boardSlice";
+import AddBoard from "./AddBoard";
+
 import BoardTile from "./BoardTile";
 import "./boards.scss";
 
 const BoardsPage = () => {
+  const { data: boards, isLoading } = useGetAllBoardsQuery();
+
+  if (isLoading) {
+    return <h1>LOADING</h1>;
+  } else {
+    console.log("printing boards");
+    console.log(boards);
+  }
+
+  if (!boards) {
+    return <h6>Loading..</h6>;
+  }
+
   return (
     <div className="boards">
-      <div className="boards_section">
+      {/* <div className="boards_section">
         <h3 className="boards_section_heading">Favourite Boards</h3>
         <div className="boards_list">
           <BoardTile name="Library List" by="You" at="7:40PM" bgcolor="red" />
@@ -17,12 +34,16 @@ const BoardsPage = () => {
             bgcolor="gray"
           />
         </div>
-      </div>
+      </div> */}
 
       <div className="boards_section">
         <h3 className="boards_section_heading">Your Boards</h3>
         <div className="boards_list">
-          <BoardTile
+          <AddBoard />
+          {boards.map((board) => {
+            return <BoardTile key={board["_id"]} board={board} />;
+          })}
+          {/* <BoardTile
             name="Income Funds"
             by="Harsh"
             at="3:10PM"
@@ -41,11 +62,11 @@ const BoardsPage = () => {
             bgcolor="green"
           />
           <BoardTile name="Library List" by="Yash" at="7:40AM" bgcolor="blue" />
-          <BoardTile name="ToDO" by="Megha" at="1:10AM" bgcolor="yellow" />
+          <BoardTile name="ToDO" by="Megha" at="1:10AM" bgcolor="yellow" /> */}
         </div>
       </div>
 
-      <div className="boards_section">
+      {/* <div className="boards_section">
         <h3 className="boards_section_heading">Shared Boards</h3>
         <div className="boards_list">
           <BoardTile name="Library List" by="Yash" at="7:40AM" bgcolor="blue" />
@@ -57,7 +78,7 @@ const BoardsPage = () => {
             bgcolor="yellow"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

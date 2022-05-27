@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const boardController = require("./../controllers/boardsController");
 
-router.get("/", boardController.getAllBoards);
-router.post("/", boardController.addBoard);
+router.get("/bylist/:listid", boardController.getAllBoards);
+router.post("/bylist/:listid", boardController.addBoard);
 
 router.get("/:id", boardController.getBoard);
 router.put("/:id", boardController.updateBoard);
