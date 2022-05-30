@@ -1,6 +1,28 @@
 const jwt = require("jsonwebtoken");
 
-const verifyJWT = (req, res, next) => {
+module.exports.socket = (socket, next) => {
+  console.log("running the middleware");
+  const header = socket.handshake.headers.authorization;
+
+  if (!header?.startsWith("Bearer ")) {
+    next(new Error("token not provided"));
+    return;
+  }
+
+  const token = header.split(" ")[1];
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      next(new Error("invalid token"));
+      return;
+    }
+
+    socket.user = decoded;
+    next();
+  });
+};
+
+module.exports.express = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
 
   if (!authHeader?.startsWith("Bearer ")) {
@@ -17,5 +39,3 @@ const verifyJWT = (req, res, next) => {
     next();
   });
 };
-
-module.exports = verifyJWT;

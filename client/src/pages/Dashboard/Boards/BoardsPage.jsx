@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useGetAllBoardsQuery } from "../../../features/boards/boardSlice";
+import { useGetAllBoardsQuery } from "../../../app/features/boardsSlice";
 import AddBoard from "./AddBoard";
 
 import BoardTile from "./BoardTile";
@@ -12,7 +12,6 @@ const BoardsPage = () => {
   if (isLoading) {
     return <h1>LOADING</h1>;
   } else {
-    console.log("printing boards");
     console.log(boards);
   }
 

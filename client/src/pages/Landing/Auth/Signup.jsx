@@ -8,7 +8,7 @@ import * as yup from "yup";
 import {
   register as registerAuth,
   reset,
-} from "../../../features/auth/authSlice";
+} from "../../../app/features/authSlice";
 
 const schema = yup
   .object({

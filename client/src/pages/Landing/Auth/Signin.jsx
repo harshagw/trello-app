@@ -8,7 +8,7 @@ import * as yup from "yup";
 import {
   login as authLogin,
   reset as authReset,
-} from "../../../features/auth/authSlice";
+} from "../../../app/features/authSlice";
 
 const schema = yup
   .object({

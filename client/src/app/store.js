@@ -1,15 +1,18 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "../features/auth/authSlice";
-import { boardsApi, pokemonApi } from "../features/boards/boardSlice";
-import { boardSlice } from "../features/boards/boardSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import authSlice from "./features/authSlice";
+import { boardsSlice } from "./features/boardsSlice";
+import boardSlice from "./features/boardSlice";
+import boardMiddleware from "./middleware/boardMiddleware";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
-    // [boardsApi.reducerPath]: boardsApi.reducer,
-    // [pokemonApi.reducerPath]: pokemonApi.reducer,
-    [boardSlice.reducerPath]: boardSlice.reducer,
+    [boardsSlice.reducerPath]: boardsSlice.reducer,
+    board: boardSlice,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).concat(boardSlice.middleware),
+    getDefaultMiddleware({}).concat(
+      boardsSlice.middleware,
+      boardMiddleware.middleware
+    ),
 });

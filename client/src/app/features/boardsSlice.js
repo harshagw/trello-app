@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { Mutex } from "async-mutex";
-import { logout, changeAccessToken } from "../auth/authSlice";
+import { logout, changeAccessToken } from "./authSlice";
 
 const mutex = new Mutex();
 
@@ -64,8 +64,8 @@ const customFetchBase = async (args, api, extraOptions) => {
   return result;
 };
 
-export const boardSlice = createApi({
-  reducerPath: "boardSlice",
+export const boardsSlice = createApi({
+  reducerPath: "boards",
 
   baseQuery: customFetchBase,
 
@@ -113,7 +113,7 @@ export const boardSlice = createApi({
       }),
       async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
         const patchResult = dispatch(
-          boardSlice.util.updateQueryData("getBoard", id, (draft) => {
+          boardsSlice.util.updateQueryData("getBoard", id, (draft) => {
             Object.assign(draft, patch);
           })
         );
@@ -129,4 +129,4 @@ export const boardSlice = createApi({
 });
 
 export const { useGetAllBoardsQuery, useGetBoardQuery, useAddBoardMutation } =
-  boardSlice;
+  boardsSlice;

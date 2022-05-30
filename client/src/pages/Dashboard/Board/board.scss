@@ -25,9 +25,24 @@
       margin-bottom: 30px;
 
       .board_headers_left {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h5 {
+          margin-right: 10px;
+        }
       }
 
       .board_headers_right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+          margin: 0 10px;
+        }
+
         p {
           font-size: 0.75rem;
         }
@@ -57,6 +72,16 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
+
+          .board_list_header_function {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            svg {
+              margin-left: 10px;
+            }
+          }
         }
 
         .add_card {

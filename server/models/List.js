@@ -18,6 +18,7 @@ const listSchema = new mongoose.Schema(
 );
 
 listSchema.pre("remove", async function (next) {
+  console.log("running pre remove list function");
   const list = this;
   await Card.deleteMany({ listId: list._id });
   next();

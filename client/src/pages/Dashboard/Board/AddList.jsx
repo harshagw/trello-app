@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useAddBoardMutation } from "../../../app/features/boardsSlice";
 
-const AddBoard = () => {
+const AddList = () => {
   const [showAddCard, setShowAddCard] = useState(false);
   const [newBoardName, setNewBoardName] = useState("");
   const [createBoard] = useAddBoardMutation();
@@ -57,4 +57,4 @@ const AddBoard = () => {
   );
 };
 
-export default AddBoard;
+export default AddList;

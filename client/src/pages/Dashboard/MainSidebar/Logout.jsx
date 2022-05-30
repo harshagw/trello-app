@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Modal from "../../../components/Modal/Modal";
-import { logout } from "../../../features/auth/authSlice";
+import { logout } from "../../../app/features/authSlice";
 
 const Logout = ({ open, setOpen }) => {
   const dispatch = useDispatch();

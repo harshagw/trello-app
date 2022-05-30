@@ -3,7 +3,7 @@ const Board = require("../models/Board");
 const getAllBoards = async (req, res, next) => {
   const userId = req.user._id;
   try {
-    const boards = await Board.find({ adminId: userId }).sort({
+    const boards = await Board.find({ members: userId }).sort({
       createdAt: "descending",
     });
     res.status(200).json({ data: boards });
