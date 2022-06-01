@@ -8,6 +8,8 @@ import {
   renameList,
   resetBoard,
   setBoard,
+  addCard,
+  deleteCard,
 } from "../features/boardSlice";
 
 let socket;
@@ -49,6 +51,14 @@ boardMiddleware.startListening({
 
     socket.on("list:deleted", (data) => {
       listenerApi.dispatch(deleteList(data));
+    });
+
+    socket.on("card:added", (data) => {
+      listenerApi.dispatch(addCard(data));
+    });
+
+    socket.on("card:deleted", (data) => {
+      listenerApi.dispatch(deleteCard(data));
     });
   },
 });

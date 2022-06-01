@@ -45,6 +45,26 @@ export const boardSlice = createSlice({
         return list;
       });
     },
+    addCard: (state, action) => {
+      state.lists = state.lists.map((list) => {
+        if (list._id == action.payload.listId) {
+          list.cards.push(action.payload);
+        }
+
+        return list;
+      });
+    },
+    deleteCard: (state, action) => {
+      state.lists = state.lists.map((list) => {
+        if (list._id == action.payload.listId) {
+          list.cards = list.cards.filter(
+            (card) => card._id != action.payload._id
+          );
+        }
+
+        return list;
+      });
+    },
   },
 });
 
@@ -56,5 +76,7 @@ export const {
   addList,
   deleteList,
   renameList,
+  addCard,
+  deleteCard,
 } = boardSlice.actions;
 export default boardSlice.reducer;

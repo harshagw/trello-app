@@ -1,5 +1,5 @@
 const { isValidObjectId } = require("mongoose");
-const Board = require("../models/Board");
+
 const {
   getBoard,
   getAllList,
@@ -7,6 +7,9 @@ const {
   getList,
   deleteList,
   renameList,
+  getCard,
+  addCard,
+  deleteCard,
 } = require("./boardService");
 
 module.exports.verifyBoard = async (socket, next) => {
@@ -69,6 +72,26 @@ module.exports.handler = async (io, socket) => {
     await renameList(data._id, data.newName);
 
     io.to(roomId).emit("list:renamed", data);
+  });
+
+  socket.on("card:add", async (data) => {
+    console.log("add card - ", data);
+
+    const c = await addCard(data.listId, data.title);
+
+    console.log(c);
+
+    const card = await getCard(c["_id"]);
+
+    io.to(roomId).emit("card:added", card);
+  });
+
+  socket.on("card:delete", async (data) => {
+    console.log("delete card - ", data);
+
+    const c = await deleteCard(data._id);
+
+    io.to(roomId).emit("card:deleted", c);
   });
 
   socket.on("disconnect", () => {

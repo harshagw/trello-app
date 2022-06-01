@@ -76,3 +76,30 @@ module.exports.renameList = async (listId, newName) => {
 
   return list;
 };
+
+module.exports.getCard = async (cardId) => {
+  const card = await Card.findById(cardId);
+
+  return card;
+};
+
+module.exports.getAllCard = async (listId) => {
+  const cards = await Card.find({ listId: listId });
+
+  return cards;
+};
+
+module.exports.addCard = async (listId, title) => {
+  const card = await Card.create({
+    listId: listId,
+    title: title,
+  });
+
+  return card;
+};
+
+module.exports.deleteCard = async (cardId) => {
+  const card = await Card.findByIdAndDelete(cardId);
+
+  return card;
+};

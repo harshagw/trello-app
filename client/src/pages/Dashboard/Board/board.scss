@@ -86,9 +86,52 @@
 
         .add_card {
           text-align: center;
-          padding: 10px 0;
+          padding: 10px;
           border: 1px dashed #a9a9a6;
           margin: 15px;
+
+          .add_card_front {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .add_card_back {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            .add_card_header {
+              display: flex;
+              justify-content: flex-end;
+            }
+
+            .add_card_footer {
+              margin-top: 20px;
+
+              .input_block {
+                display: flex;
+                padding: 5px;
+                border: 2px solid var(--gray-9);
+                border-radius: 10px;
+                overflow: hidden;
+
+                input {
+                  flex-grow: 1;
+                  display: block;
+                  background-color: inherit;
+                  padding: 3px;
+                }
+
+                button {
+                  display: inline-block;
+                  align-self: flex-start;
+                  max-width: 40%;
+                }
+              }
+            }
+          }
         }
 
         .board_cards {

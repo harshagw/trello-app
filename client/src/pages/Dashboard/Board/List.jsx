@@ -9,6 +9,7 @@ import {
 } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { boardEmit } from "../../../app/features/boardSlice";
+import AddCard from "./AddCard";
 
 const ListNameInput = ({ _id, name }) => {
   const [disableNameInput, setDisableNameInput] = useState(true);
@@ -88,9 +89,7 @@ const List = ({ data, setCardDetailsOpen }) => {
         })}
       </div>
 
-      <div className="add_card">
-        <h6>Add new card</h6>
-      </div>
+      <AddCard listId={data._id} />
     </div>
   );
 };
