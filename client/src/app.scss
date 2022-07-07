@@ -1,4 +1,4 @@
-// @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700,800,900&display=swap");
+@import "globals";
 
 html {
   overflow-x: hidden;
@@ -22,6 +22,9 @@ html {
   color: white;
   padding: 10px 25px;
   border-radius: 10px;
+  font-size: 16px;
+  border: none;
+
   cursor: pointer;
 
   &.button_larger {
@@ -35,13 +38,35 @@ html {
   }
 }
 
-.name_avatar {
-  font-size: 0.85rem;
-  padding: 7px;
-  background-color: var(--blue-7);
-  border-radius: 5px;
-  color: white;
-  text-align: center;
+.name_avatars {
+  display: flex;
+
+  .name_avatar {
+    position: relative;
+    left: -8px;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+
+    &:first-of-type {
+      left: 0;
+    }
+
+    span {
+      display: block;
+      background-color: var(--blue-6);
+      font-size: 0.85rem;
+      color: white;
+      height: 25px;
+      width: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+    }
+  }
 }
 
 a {

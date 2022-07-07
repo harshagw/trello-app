@@ -18,6 +18,11 @@ const cardSchema = new mongoose.Schema(
       required: true,
       ref: "List",
     },
+    tags: [
+      {
+        type: String,
+      },
+    ],
     assignedTo: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -26,6 +31,10 @@ const cardSchema = new mongoose.Schema(
     dueDate: {
       type: Date,
       required: false,
+    },
+    order: {
+      type: Number,
+      required: true,
     },
   },
   { timestamps: true }

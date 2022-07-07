@@ -42,6 +42,7 @@ const addBoard = async (req, res, next) => {
     ...req.body,
     description: "",
     adminId: userId,
+    members: [userId],
   });
 
   try {
@@ -63,9 +64,7 @@ const updateBoard = async (req, res, next) => {
 
   const updates = Object.keys(req.body);
   const allowedUpdates = ["name", "description"];
-  const isValidOperation = updates.every((update) =>
-    allowedUpdates.includes(update)
-  );
+  const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
   if (!isValidOperation) {
     return res.status(400).send({ message: "Invalid updates!" });

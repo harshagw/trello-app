@@ -2,15 +2,22 @@ import { createListenerMiddleware } from "@reduxjs/toolkit";
 import io from "socket.io-client";
 import {
   addList,
+  setError,
   boardEmit,
   deleteList,
   initializeBoard,
   renameList,
+  reorderList,
   resetBoard,
   setBoard,
+  updateBoard,
   addCard,
   deleteCard,
+  updateCard,
+  reorderCards,
 } from "../features/boardSlice";
+
+import { updateBoard as updateGlobalBoard } from "../features/userSlice";
 
 let socket;
 
@@ -23,6 +30,8 @@ boardMiddleware.startListening({
 
     const { auth } = listenerApi.getState();
 
+    console.log("connecting to the board socket of - ", boardId);
+
     socket = io.connect("http://localhost:3001/board", {
       extraHeaders: { Authorization: `Bearer ${auth?.data?.accessToken}` },
       query: { boardId: boardId },
@@ -31,6 +40,7 @@ boardMiddleware.startListening({
 
     socket.on("connect_error", (err) => {
       console.log("The server sent the connect_error - ", err.message);
+      listenerApi.dispatch(setError());
     });
 
     socket.on("connect", () => {
@@ -39,6 +49,15 @@ boardMiddleware.startListening({
 
     socket.on("board:get", (data) => {
       listenerApi.dispatch(setBoard(data));
+    });
+
+    socket.on("board:updated", (data) => {
+      listenerApi.dispatch(updateBoard(data));
+      listenerApi.dispatch(updateGlobalBoard(data));
+    });
+
+    socket.on("board:deleted", (data) => {
+      listenerApi.dispatch(resetBoard());
     });
 
     socket.on("list:added", (data) => {
@@ -53,12 +72,28 @@ boardMiddleware.startListening({
       listenerApi.dispatch(deleteList(data));
     });
 
+    socket.on("list:reordered", (data) => {
+      console.log("list reordering");
+      console.log(data);
+      listenerApi.dispatch(reorderList(data));
+    });
+
     socket.on("card:added", (data) => {
       listenerApi.dispatch(addCard(data));
     });
 
+    socket.on("card:updated", (data) => {
+      listenerApi.dispatch(updateCard(data));
+    });
+
     socket.on("card:deleted", (data) => {
       listenerApi.dispatch(deleteCard(data));
+    });
+
+    socket.on("card:reordered", (data) => {
+      console.log("card reordering");
+      console.log(data);
+      listenerApi.dispatch(reorderCards(data));
     });
   },
 });

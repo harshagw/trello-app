@@ -3,11 +3,12 @@ import { Route, Routes } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 
-import "./globals.scss";
 import "./app.scss";
-import DashboardMainPage from "./pages/Dashboard/DashboardMainPage";
+
 import LandingMainPage from "./pages/Landing/LandingMainPage";
 import { PrivateRoute } from "./app/routes";
+// import DashboardMainPage from "./pages/Dashboard/DashboardMainPage";
+import MainPage from "./pages/Main/MainPage";
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
           path="/dashboard/*"
           element={
             <PrivateRoute>
-              <DashboardMainPage />
+              <MainPage />
+              {/* <DashboardMainPage /> */}
             </PrivateRoute>
           }
         />

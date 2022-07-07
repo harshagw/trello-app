@@ -1,0 +1,89 @@
+// .card_detail {
+//   background-color: var(--gray-2);
+//   padding: 20px;
+//   border-radius: 5px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 700px;
+
+//   .card_detail_header {
+//     display: flex;
+//     justify-content: space-between;
+//     // align-items: center;
+//     margin-bottom: 20px;
+
+//     input {
+//       background-color: inherit;
+//       flex: 1;
+//       margin-right: 20px;
+//       padding: 10px;
+//       border-radius: 4px;
+
+//       &:focus {
+//         background-color: white;
+//         // border: 1px solid var(--primary-color);
+//       }
+//     }
+//   }
+
+//   .card_detail_body {
+//     display: flex;
+
+//     .card_detail_left {
+//       flex: 1;
+//       margin-right: 20px;
+
+//       textarea {
+//         width: 100%;
+//         background-color: var(--gray-3);
+//         padding: 10px;
+//         outline: none;
+//         min-height: 150px;
+
+//         &:focus {
+//           background-color: white;
+//         }
+//       }
+
+//       .action_buttons {
+//         display: flex;
+//         justify-content: flex-end;
+//         margin-top: 10px;
+
+//         button {
+//           display: block;
+//           padding: 10px 12px;
+//           background-color: var(--primary-color);
+//           border-radius: 5px;
+//           color: white;
+//           margin-left: 5px;
+
+//           &.gray {
+//             background-color: var(--gray-3);
+//             color: black;
+//           }
+//         }
+//       }
+//     }
+
+//     .card_detail_right {
+//       max-width: 33%;
+
+//       .card_tags {
+//         margin: 10px 0;
+//         display: flex;
+//         flex-wrap: wrap;
+
+//         a {
+//           font-size: 0.75rem;
+//           padding: 3px 8px;
+//           margin: 0 5px 5px 0;
+//           border-radius: 3px;
+//           font-weight: bold;
+//         }
+//       }
+//     }
+//   }
+// }

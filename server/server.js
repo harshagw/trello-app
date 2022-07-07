@@ -63,12 +63,20 @@ mongoose.connection.once("open", () => {
     console.log(`Server running on PORT ${PORT}...`);
   });
 
-  const boardHandler = require("./sockets/boardHandler");
-
+  const boardSocket = require("./sockets/boardSocket");
   const boardNamespace = io.of("/board");
+
+  const userSocket = require("./sockets/userSocket");
+  const userNamespace = io.of("/user");
+
   boardNamespace.use(verifyJWT.socket);
-  boardNamespace.use(boardHandler.verifyBoard);
+  boardNamespace.use(boardSocket.verifyBoard);
   boardNamespace.on("connection", (socket) => {
-    boardHandler.handler(boardNamespace, socket);
+    boardSocket.handler(boardNamespace, userNamespace, socket);
+  });
+
+  userNamespace.use(verifyJWT.socket);
+  userNamespace.on("connection", (socket) => {
+    userSocket.handler(userNamespace, socket);
   });
 });

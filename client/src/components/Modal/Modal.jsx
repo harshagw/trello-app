@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import "./modal.scss";
+import { AnimatePresence } from "framer-motion";
 
-const Modal = ({ children, onClose, variant }) => {
+const Modal = ({ open, children, onClose, variant }) => {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -95,24 +96,28 @@ const Modal = ({ children, onClose, variant }) => {
   };
 
   return (
-    <motion.div
-      onClick={onClose}
-      className="backdrop"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <motion.div
-        onClick={(e) => e.stopPropagation()}
-        className="modal"
-        variants={gifYouUp}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        {children}
-      </motion.div>
-    </motion.div>
+    <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+      {open && (
+        <motion.div
+          onClick={onClose}
+          className="backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            onClick={(e) => e.stopPropagation()}
+            className="modal"
+            variants={gifYouUp}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            {children}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

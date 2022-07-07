@@ -1,0 +1,31 @@
+.main_sidebar {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  background-color: #020202;
+  color: white;
+  min-width: 60px;
+  padding: 20px 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eeeeef;
+
+  .logo h2 {
+    color: white;
+  }
+
+  .header_menu {
+    display: flex;
+    flex-direction: column;
+
+    .header_menu_item {
+      margin-top: 20px;
+
+      .header_sub_menu_item {
+        display: block;
+        margin: 5px 0;
+        color: white;
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@
   .carousel {
     height: 100%;
     width: clamp(400px, 40%, 600px);
-    background-color: var(--cyan-6);
+    background-color: rgb(62, 131, 192);
     border-radius: var(--radius-3);
   }
 
@@ -59,6 +59,7 @@
             display: block;
             background-color: white;
             padding: 15px 10px;
+            border: none;
           }
 
           a {

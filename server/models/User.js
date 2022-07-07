@@ -21,6 +21,13 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     refreshToken: String,
+    favourites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Board",
+      },
+    ],
   },
   { timestamps: true }
 );
@@ -37,7 +44,7 @@ userSchema.methods.generateAccessToken = function () {
   };
 
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "1hr",
+    expiresIn: "1d",
   });
 };
 
@@ -47,7 +54,7 @@ userSchema.methods.generateRefreshToken = function () {
   };
 
   return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "30d",
   });
 };
 

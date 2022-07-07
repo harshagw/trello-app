@@ -1,0 +1,99 @@
+.boards {
+  margin: 20px;
+
+  .boards_section {
+    margin-bottom: 20px;
+
+    .boards_section_heading {
+      margin: 0 0 20px;
+    }
+
+    .boards_list {
+      display: flex;
+      flex-wrap: wrap;
+
+      .add_new_board {
+        .front {
+          border: 2px dashed var(--gray-4);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .back {
+          border: 3px solid var(--gray-9);
+          justify-content: space-between;
+          align-items: flex-start;
+
+          .board_tile_header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+          }
+
+          .board_tile_body {
+            flex-grow: 1;
+            margin: 5px 0;
+          }
+
+          .board_tile_footer {
+            .input_block {
+              display: flex;
+              padding: 5px;
+              border: 3px solid var(--gray-9);
+              border-radius: 10px;
+
+              input {
+                flex-grow: 1;
+                display: block;
+                background-color: inherit;
+                padding: 5px;
+              }
+
+              button {
+                display: inline-block;
+                align-self: flex-start;
+              }
+            }
+          }
+        }
+      }
+
+      .board_tile {
+        height: 200px;
+        width: 300px;
+        background-color: var(--gray-2);
+        padding: 20px;
+        margin: 0 20px 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        border-radius: 5px;
+
+        p {
+          margin-top: 5px;
+          color: var(--gray-7);
+          font-size: 0.9rem;
+        }
+
+        .shared {
+          position: relative;
+          margin-top: 5px;
+
+          a {
+            display: inline-block;
+            border-radius: 50%;
+            color: white;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            margin-right: 2px;
+
+            &.shared_plus {
+              padding: 4px 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

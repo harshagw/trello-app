@@ -30,10 +30,14 @@ const boardSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-boardSchema.pre("remove", async function (next) {
-  const board = this;
-  await List.deleteMany({ boardId: board._id });
-  next();
+boardSchema.post("findOneAndDelete", async function (doc) {
+  console.log("running post remove board function");
+  console.log(doc);
+  // const lists = List.find({ boardId: doc._id });
+  // for (var i = 0; i < lists.length; i++) {
+  //   console.log(lists[i]);
+  //   await List.findByIdAndDelete(lists[i]._id);
+  // }
 });
 
 module.exports = mongoose.model("Board", boardSchema);

@@ -1,0 +1,21 @@
+.dashboard {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+
+  svg {
+    line-height: none;
+  }
+
+  .dashboard_body {
+    flex-grow: 1;
+    overflow-y: auto;
+    background: var(--gray-1);
+  }
+}
+
+.logout_modal {
+}

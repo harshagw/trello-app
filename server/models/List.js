@@ -13,15 +13,18 @@ const listSchema = new mongoose.Schema(
       required: true,
       ref: "Board",
     },
+    order: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-listSchema.pre("remove", async function (next) {
-  console.log("running pre remove list function");
-  const list = this;
-  await Card.deleteMany({ listId: list._id });
-  next();
+listSchema.post("findOneAndDelete", async function (doc) {
+  console.log("running post remove list function");
+  console.log(doc);
+  if (doc) await Card.deleteMany({ listId: doc._id });
 });
 
 module.exports = mongoose.model("List", listSchema);
