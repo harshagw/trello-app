@@ -44,8 +44,12 @@ export const boardSlice = createSlice({
       state.lists = state.lists.filter((list) => list._id != action.payload._id);
     },
     renameList: (state, action) => {
+      console.log("rename a list");
       state.lists = state.lists.map((list) => {
         if (list._id == action.payload._id) {
+          console.log("runnig list update");
+          console.log(list.name);
+          console.log(action.payload.newName);
           list.name = action.payload.newName;
         }
 

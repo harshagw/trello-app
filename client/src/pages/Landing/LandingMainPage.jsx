@@ -14,7 +14,6 @@ const LandingMainPage = () => {
       <div className="data">
         <header>
           <Link to="/">home</Link>
-          <Link to="/aboutus">about us</Link>
           <Link to="/signin">sign in</Link>
           <Link to="/signup">sign up</Link>
         </header>
@@ -41,9 +40,7 @@ const LandingMainPage = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-        <footer>
-          <a href="#">terms and condition</a>
-        </footer>
+        <footer>{/* <a href="#">terms and condition</a> */}</footer>
       </div>
       <div className="carousel"></div>
     </div>

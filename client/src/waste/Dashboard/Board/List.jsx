@@ -9,6 +9,7 @@ import { Droppable } from "react-beautiful-dnd";
 
 const ListNameInput = ({ _id, name }) => {
   const [disableNameInput, setDisableNameInput] = useState(true);
+
   const [newName, setNewName] = useState(name);
 
   const dispatch = useDispatch();

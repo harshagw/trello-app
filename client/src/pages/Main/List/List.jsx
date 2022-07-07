@@ -19,6 +19,7 @@ const List = ({ data }) => {
   };
 
   console.log("rendering list - ", data._id, data.order);
+  console.log(data.name);
 
   return (
     <Draggable draggableId={data["_id"]} index={data["order"]} type="list">

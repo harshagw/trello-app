@@ -58,6 +58,7 @@ boardMiddleware.startListening({
 
     socket.on("board:deleted", (data) => {
       listenerApi.dispatch(resetBoard());
+      listenerApi.dispatch(setError());
     });
 
     socket.on("list:added", (data) => {
